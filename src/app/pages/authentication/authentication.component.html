@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true">
+  <ion-title size="large">Log In</ion-title>
+  <ion-item>
+    <ion-title size="small">Account</ion-title>
+    <form [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="stacked">Mail Address</ion-label>
+        <ion-input
+          type="email"
+          [formControl]="emailControl"
+          name="email"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input
+          type="current-password"
+          [formControl]="passwordControl"
+          name="password"
+        ></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block>Sign In</button>
+    </form>
+  </ion-item>
+  <ion-item>
+    <ion-title size="small">Others</ion-title>
+    <ion-button (click)="login()">Log In with Google</ion-button>
+  </ion-item>
+
+  <ion-title size="small">Register</ion-title>
+  <ion-item>
+    <ion-button>To Register Page</ion-button>
+  </ion-item>
+</ion-content>
+<!-- <div *ngIf="auth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <button (click)="logout()">Logout</button>
+  </div>
+  <ng-template #showLogin>
+    <p>Please login.</p>
+    <button (click)="login()">Login with Google</button>
+  </ng-template> -->
