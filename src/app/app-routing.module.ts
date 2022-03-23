@@ -27,6 +27,12 @@ const routes: Routes = [
     ...canActivate(redirectLoggedInToItems),
   },
   {
+    path: 'register',
+    loadChildren: () =>
+      import('./pages/register/register.module').then((m) => m.RegisterModule),
+    ...canActivate(redirectLoggedInToItems),
+  },
+  {
     path: '',
     redirectTo: 'auth',
     pathMatch: 'full',

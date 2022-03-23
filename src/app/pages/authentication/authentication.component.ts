@@ -41,21 +41,20 @@ export class AuthenticationComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(
-      'email : ' +
-        this.form.get('email') +
-        ', password : ' +
-        this.form.get('password')
+  async loginEmailAndPassword() {
+    await this.as.loginEmailAndPassword(
+      this.form.get('email').value,
+      this.form.get('password').value
     );
-  }
-
-  async login() {
-    await this.as.login();
     this.router.navigate(['/playlist']);
   }
 
-  // logout() {
-  //   this.as.logout();
-  // }
+  async loginGoogle() {
+    await this.as.loginGoogle();
+    this.router.navigate(['/playlist']);
+  }
+
+  toRegisterPage() {
+    this.router.navigate(['/register']);
+  }
 }

@@ -23,4 +23,8 @@ export class MenuComponent implements OnInit {
     await this.authenticationService.logout();
     this.router.navigate(['/auth']);
   }
+
+  isSignedIn(): boolean {
+    return this.authenticationService.isSignedIn();
+  }
 }

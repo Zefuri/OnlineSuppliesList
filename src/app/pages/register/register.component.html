@@ -1,10 +1,10 @@
 <ion-content [fullscreen]="true">
   <ion-title class="title-center" size="large">Log In</ion-title>
   <form
-    class="sign-in-form"
+    class="sign-up-form"
     [formGroup]="form"
     *ngIf="form"
-    (ngSubmit)="loginEmailAndPassword()"
+    (ngSubmit)="register()"
   >
     <ion-item>
       <ion-label position="stacked">Mail Address</ion-label>
@@ -14,6 +14,7 @@
         name="email"
       ></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-label position="stacked">Password</ion-label>
       <ion-input
@@ -22,17 +23,16 @@
         name="password"
       ></ion-input>
     </ion-item>
-    <ion-button type="submit" block>Sign In</ion-button>
-  </form>
-  <div class="register">
-    <p>
-      No account yet ?
-      <a class="link" (click)="toRegisterPage()">Create one</a> !
-    </p>
-  </div>
 
-  <ion-title class="title-center">or</ion-title>
-  <div class="other-cnt-opt">
-    <ion-button (click)="loginGoogle()">Log In with Google</ion-button>
-  </div>
+    <ion-item>
+      <ion-label position="stacked">Confirm password</ion-label>
+      <ion-input
+        type="current-password"
+        [formControl]="confirmPasswordControl"
+        name="confirmPassword"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" block>Create account</ion-button>
+  </form>
 </ion-content>
