@@ -3,16 +3,29 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Playlist } from '../models/playlist';
 import { Todo } from '../models/todo';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlaylistService {
-  constructor(private afs: AngularFirestore) {}
+  constructor(
+    private afs: AngularFirestore,
+    private authService: AuthenticationService
+  ) {}
 
   getAll(): Observable<Playlist[]> {
     return this.afs
       .collection<Playlist>('/playlists')
+      .valueChanges({ idField: 'id' });
+  }
+
+  getUserPlaylists(): Observable<Playlist[]> {
+    console.log(this.authService.connectedUser.uid);
+    return this.afs
+      .collection<Playlist>('/playlists', (ref) =>
+        ref.where('owner', '==', this.authService.connectedUser.uid)
+      )
       .valueChanges({ idField: 'id' });
   }
 

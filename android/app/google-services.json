@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "487201530680",
+    "firebase_url": "https://android-project-m2-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "android-project-m2",
+    "storage_bucket": "android-project-m2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487201530680:android:5ab334842a67ee6e4a57cd",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487201530680-hronsmbv8bc31slddsutm7e406v6nai9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3TLhVBhvyuGSY4-s8C6TOptHdbT1FR6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487201530680-hronsmbv8bc31slddsutm7e406v6nai9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

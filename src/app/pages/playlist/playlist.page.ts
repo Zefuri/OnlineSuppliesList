@@ -17,11 +17,12 @@ export class PlaylistPage implements OnInit {
 
   constructor(
     private playlistService: PlaylistService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private authService: AuthenticationService
   ) {}
 
-  ngOnInit(): void {
-    this.playlists$ = this.playlistService.getAll();
+  ngOnInit() {
+    this.playlists$ = this.playlistService.getUserPlaylists();
   }
 
   delete(id: number) {
