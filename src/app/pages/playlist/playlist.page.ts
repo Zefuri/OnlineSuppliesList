@@ -4,8 +4,6 @@ import { CreatePlaylistComponent } from '../../modals/create-playlist/create-pla
 import { Playlist } from '../../models/playlist';
 import { PlaylistService } from '../../services/playlist.service';
 import { EMPTY, Observable } from 'rxjs';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playlist',
@@ -17,8 +15,7 @@ export class PlaylistPage implements OnInit {
 
   constructor(
     private playlistService: PlaylistService,
-    private modalController: ModalController,
-    private authService: AuthenticationService
+    private modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -29,9 +26,16 @@ export class PlaylistPage implements OnInit {
     this.playlistService.removePlaylist(id);
   }
 
+  share(id: number) {
+    // TODO
+  }
+
   async openModal() {
     const modal = await this.modalController.create({
       component: CreatePlaylistComponent,
+      swipeToClose: true,
+      initialBreakpoint: 0.5,
+      breakpoints: [0, 0.5, 1],
     });
     await modal.present();
   }
