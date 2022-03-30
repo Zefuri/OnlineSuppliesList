@@ -37,6 +37,9 @@ export class PlaylistDetailComponent implements OnInit {
   async openModal() {
     const modal = await this.modalController.create({
       component: CreateTodoComponent,
+      swipeToClose: true,
+      initialBreakpoint: 0.5,
+      breakpoints: [0, 0.5, 1],
       componentProps: {
         playlistId: this.route.snapshot.params.id,
       },
