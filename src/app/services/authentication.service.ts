@@ -10,6 +10,7 @@ export class AuthenticationService {
 
   constructor(public auth: AngularFireAuth) {
     this.auth.authState.subscribe((user) => {
+      console.log(this.connectedUser);
       if (user) {
         this.connectedUser = user;
       } else {
@@ -35,15 +36,16 @@ export class AuthenticationService {
     await this.auth.signOut();
   }
 
-  loginEmailAndPassword(email: string, password: string) {
+  async loginEmailAndPassword(email: string, password: string) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  loginGoogle() {
+  async loginGoogle() {
     return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
-  logout() {
+  async logout() {
+    this.connectedUser = null;
     return this.auth.signOut();
   }
 }

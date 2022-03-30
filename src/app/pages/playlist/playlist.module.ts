@@ -8,6 +8,7 @@ import { PlaylistPageRoutingModule } from './playlist-routing.module';
 
 import { PlaylistPage } from './playlist.page';
 import { CreatePlaylistComponent } from '../../modals/create-playlist/create-playlist.component';
+import { ShareListComponent } from 'src/app/modals/share-list/share-list.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { CreatePlaylistComponent } from '../../modals/create-playlist/create-pla
     IonicModule,
     PlaylistPageRoutingModule,
   ],
-  declarations: [PlaylistPage, CreatePlaylistComponent],
+  declarations: [PlaylistPage, CreatePlaylistComponent, ShareListComponent],
 })
 export class PlaylistPageModule {}

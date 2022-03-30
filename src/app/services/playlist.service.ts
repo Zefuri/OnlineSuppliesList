@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Playlist } from '../models/playlist';
 import { Todo } from '../models/todo';
 import { AuthenticationService } from './authentication.service';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +22,34 @@ export class PlaylistService {
   }
 
   getUserPlaylists(): Observable<Playlist[]> {
-    console.log(this.authService.connectedUser.uid);
     return this.afs
       .collection<Playlist>('/playlists', (ref) =>
         ref.where('owner', '==', this.authService.connectedUser.uid)
+      )
+      .valueChanges({ idField: 'id' });
+  }
+
+  getUserPlaylistsSharedAsReader(): Observable<Playlist[]> {
+    console.log(this.authService.connectedUser.email);
+    return this.afs
+      .collection<Playlist>('/playlists', (ref) =>
+        ref.where(
+          'readers',
+          'array-contains',
+          this.authService.connectedUser.email
+        )
+      )
+      .valueChanges({ idField: 'id' });
+  }
+
+  getUserPlaylistsSharedAsWriter(): Observable<Playlist[]> {
+    return this.afs
+      .collection<Playlist>('/playlists', (ref) =>
+        ref.where(
+          'writers',
+          'array-contains',
+          this.authService.connectedUser.email
+        )
       )
       .valueChanges({ idField: 'id' });
   }
@@ -59,5 +84,11 @@ export class PlaylistService {
 
   removeTodo(playlistId: number, todoId: number) {
     this.afs.doc<Todo>(`/playlists/${playlistId}/todos/${todoId}`).delete();
+  }
+
+  updatePlaylist(playlist: Playlist) {
+    this.afs
+      .doc<Playlist>(`/playlists/${playlist.id}`)
+      .update(JSON.parse(JSON.stringify({ playlist })));
   }
 }

@@ -1,0 +1,21 @@
+<div id="modal-share">
+  <h3 class="title-margin">Add an item</h3>
+  <form [formGroup]="shareForm" (ngSubmit)="addSharedUser()">
+    <ion-item>
+      <ion-label position="stacked">Mail Address</ion-label>
+      <ion-input formControlName="mailAddress"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Right</ion-label>
+      <ion-select formControlName="right" interface="popover" value="readers">
+        <ion-select-option value="readers">Read</ion-select-option>
+        <ion-select-option value="writers">Write</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button [disabled]="shareForm.invalid" expand="block" type="submit"
+      >Validate</ion-button
+    >
+  </form>
+</div>
