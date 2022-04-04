@@ -34,6 +34,31 @@ export class PlaylistDetailComponent implements OnInit {
     this.playlistService.removeTodo(this.route.snapshot.params.id, todoId);
   }
 
+  getQuantity(quantity) {
+    if (quantity && quantity > 0) {
+      return quantity;
+    }
+    return 0;
+  }
+
+  increment(todo: Todo) {
+    todo.quantity += 1;
+    this.playlistService.updateTodo(
+      this.route.snapshot.params.id,
+      todo.id,
+      todo
+    );
+  }
+
+  decrement(todo: Todo) {
+    todo.quantity = todo.quantity - 1 >= 0 ? todo.quantity - 1 : 0;
+    this.playlistService.updateTodo(
+      this.route.snapshot.params.id,
+      todo.id,
+      todo
+    );
+  }
+
   async openModal() {
     const modal = await this.modalController.create({
       component: CreateTodoComponent,

@@ -91,4 +91,10 @@ export class PlaylistService {
       .doc<Playlist>(`/playlists/${playlist.id}`)
       .update(JSON.parse(JSON.stringify({ playlist })));
   }
+
+  updateTodo(playlistId: number, todoId: number, newTodo: Todo) {
+    this.afs
+      .doc<Todo>(`/playlists/${playlistId}/todos/${todoId}`)
+      .update(newTodo);
+  }
 }
