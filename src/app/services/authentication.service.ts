@@ -10,12 +10,12 @@ export class AuthenticationService {
 
   constructor(public auth: AngularFireAuth) {
     this.auth.authState.subscribe((user) => {
-      console.log(this.connectedUser);
       if (user) {
         this.connectedUser = user;
       } else {
         this.connectedUser = null;
       }
+      console.log(this.connectedUser);
     });
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class MenuComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {}
@@ -26,5 +28,12 @@ export class MenuComponent implements OnInit {
 
   isSignedIn(): boolean {
     return this.authenticationService.isSignedIn();
+  }
+
+  navigateBack() {
+    this.location.back();
+  }
+  canNavigateBack() {
+    return this.router.url !== '/playlist';
   }
 }
