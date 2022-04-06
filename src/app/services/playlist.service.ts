@@ -30,15 +30,15 @@ export class PlaylistService {
   }
 
   getUserPlaylistsSharedAsReader(): Observable<Playlist[]> {
-    console.log(this.authService.connectedUser.email);
     return this.afs
-      .collection<Playlist>('/playlists', (ref) =>
-        ref.where(
+      .collection<Playlist>('/playlists', (ref) => {
+        console.log(ref);
+        return ref.where(
           'readers',
           'array-contains',
           this.authService.connectedUser.email
-        )
-      )
+        );
+      })
       .valueChanges({ idField: 'id' });
   }
 
@@ -87,9 +87,7 @@ export class PlaylistService {
   }
 
   updatePlaylist(playlist: Playlist) {
-    this.afs
-      .doc<Playlist>(`/playlists/${playlist.id}`)
-      .update(JSON.parse(JSON.stringify({ playlist })));
+    this.afs.doc<Playlist>(`/playlists/${playlist.id}`).update(playlist);
   }
 
   updateTodo(playlistId: number, todoId: number, newTodo: Todo) {

@@ -24,16 +24,22 @@ export class ShareListComponent implements OnInit {
   ) {
     this.shareForm = this.fb.group({
       mailAddress: ['', [Validators.required, Validators.email]],
-      right: ['', Validators.required],
+      right: ['readers', Validators.required],
     });
   }
 
   ngOnInit(): void {}
 
   addSharedUser() {
-    this.playlist[this.shareForm.get('right').value].push(
-      this.shareForm.get('mailAddress').value
-    );
+    if (this.playlist[this.shareForm.get('right').value]) {
+      this.playlist[this.shareForm.get('right').value].push(
+        this.shareForm.get('mailAddress').value
+      );
+    } else {
+      this.playlist[this.shareForm.get('right').value] = [
+        this.shareForm.get('mailAddress').value,
+      ];
+    }
     this.playlistService.updatePlaylist(this.playlist);
     this.modalController.dismiss();
   }

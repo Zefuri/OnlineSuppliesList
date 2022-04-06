@@ -16,6 +16,6 @@ export class Todo {
     this.name = name;
     this.description = description;
     this.completed = completed ?? false;
-    this.quantity = quantity || 0;
+    this.quantity = quantity || 1;
   }
 }

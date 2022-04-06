@@ -34,6 +34,6 @@ export class MenuComponent implements OnInit {
     this.location.back();
   }
   canNavigateBack() {
-    return this.router.url !== '/playlist';
+    return this.router.url !== '/playlist' && this.router.url !== '/auth';
   }
 }

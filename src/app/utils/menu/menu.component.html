@@ -18,12 +18,10 @@
     </div>
   </ion-buttons>
   <ion-buttons slot="start">
-    <div *ngIf="isSignedIn()">
-      <div *ngIf="canNavigateBack()">
-        <ion-button (click)="navigateBack()">
-          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
-        </ion-button>
-      </div>
+    <div *ngIf="canNavigateBack()">
+      <ion-button (click)="navigateBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
     </div>
   </ion-buttons>
   <ion-title>Daily Grocery</ion-title>
