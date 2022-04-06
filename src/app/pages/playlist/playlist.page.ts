@@ -34,13 +34,13 @@ export class PlaylistPage implements OnInit {
     this.playlistService.removePlaylist(id);
   }
 
-  deleteFromReaders(id: number) {
-    // TODO
-  }
+  // deleteFromReaders(id: number) {
+  //   // TODO
+  // }
 
-  deleteFromWriters(id: number) {
-    // TODO
-  }
+  // deleteFromWriters(id: number) {
+  //   // TODO
+  // }
 
   async share(playlist: Playlist) {
     const modal = await this.modalController.create({

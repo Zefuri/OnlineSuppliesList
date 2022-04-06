@@ -21,7 +21,14 @@ export class CreateTodoComponent implements OnInit {
   ) {
     this.todoForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', Validators.maxLength(255)],
+      quantity: [
+        '1',
+        [
+          Validators.required,
+          Validators.min(1),
+          Validators.pattern('^[0-9]*$'),
+        ],
+      ],
     });
   }
 
@@ -32,7 +39,7 @@ export class CreateTodoComponent implements OnInit {
       this.playlistId,
       new Todo(
         this.todoForm.get('name').value,
-        this.todoForm.get('description').value
+        this.todoForm.get('quantity').value
       )
     );
     this.modalController.dismiss();

@@ -1,7 +1,12 @@
 <ion-content [fullscreen]="true">
-  <ion-title class="title-margin">{{
-    (playlist$ | async)?.name | titlecase
-  }}</ion-title>
+  <!-- <div *ngIf="titleMode; else titleDisplay">
+    <form [formGroup]="titleForm" (ngSubmit)="updateTitle()">
+      <ion-input name="title" [(ngModel)]="playlist$"></ion-input>
+    </form>
+  </div> -->
+  <ion-title class="title-margin">
+    {{ (playlist$ | async)?.name | titlecase }}
+  </ion-title>
 
   <ion-list>
     <ion-item-sliding *ngFor="let todo of todos$ | async">
@@ -33,3 +38,14 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<!-- <ng-template #titleDisplay>
+  <ion-title class="title-margin">
+    {{ (playlist$ | async)?.name | titlecase }}
+    <ion-icon
+      class="icon-list"
+      name="pencil-outline"
+      (click)="editTitleMode()"
+    ></ion-icon>
+  </ion-title>
+</ng-template> -->

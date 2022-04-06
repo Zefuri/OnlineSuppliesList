@@ -7,7 +7,6 @@ import { Todo } from 'src/app/models/todo';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { EMPTY, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -71,4 +70,13 @@ export class PlaylistDetailComponent implements OnInit {
     });
     await modal.present();
   }
+
+  // editTitleMode() {
+  //   this.titleMode = true;
+  // }
+
+  // async updateTitle() {
+  //   playlist = this.playlist$.pipe((playlist) => this);
+  //   this.afs.updateTitle(await this.playlist$.)
+  // }
 }
